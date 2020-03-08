@@ -16,7 +16,7 @@ parser.add_argument(
 parser.add_argument(
     "-s",
     "--sockets",
-    default=500,
+    default=10000,
     help="Number of sockets to use in the test",
     type=int,
 )
@@ -45,11 +45,11 @@ parser.add_argument(
 parser.add_argument(
     "--sleeptime",
     dest="sleeptime",
-    default=15,
+    default=0,
     type=int,
     help="Time to sleep between each header sent.",
 )
-parser.set_defaults(verbose=False)
+parser.set_defaults(verbose=True)
 parser.set_defaults(randuseragent=False)
 parser.set_defaults(useproxy=False)
 parser.set_defaults(https=False)
