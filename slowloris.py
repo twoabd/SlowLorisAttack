@@ -43,14 +43,14 @@ parser.add_argument(
     "--https", dest="https", action="store_true", help="Use HTTPS for the requests"
 )
 parser.add_argument(
-    "-h",
+    "-i",
     "--sleeptime",
     dest="sleeptime",
     default=0,
     type=int,
     help="Time to sleep between each header sent.",
 )
-parser.set_defaults(verbose=True)
+parser.set_defaults(verbose=False)
 parser.set_defaults(randuseragent=False)
 parser.set_defaults(useproxy=False)
 parser.set_defaults(https=False)
