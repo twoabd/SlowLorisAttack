@@ -43,6 +43,7 @@ parser.add_argument(
     "--https", dest="https", action="store_true", help="Use HTTPS for the requests"
 )
 parser.add_argument(
+    "-h",
     "--sleeptime",
     dest="sleeptime",
     default=0,
