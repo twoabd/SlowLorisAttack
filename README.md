@@ -7,4 +7,4 @@ Works mostly on thread based servers e.g. Apache and IIS.
 Tested on Small Websites.   
 Some server may block source IP, use VPN.   
 Verbose, Random User Agent is on.  
-Sleep time is 0, Sockets Count is 10000.
+Sleep time is 0, Sockets Count is 500.
